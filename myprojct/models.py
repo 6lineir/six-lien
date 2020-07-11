@@ -25,8 +25,8 @@ class projects(models.Model):
     slug = models.SlugField(unique=True, verbose_name="آدرس پروژه")
     memo = models.TextField(verbose_name="توضیحات")
     category = models.ManyToManyField(cat_prjct, verbose_name="دسته بندی")
-    Stime = models.TimeField(verbose_name="زمان شروع")
-    Etime = models.TimeField(verbose_name="زمان پایان")
+    Stime = models.DateTimeField(verbose_name="زمان شروع")
+    Etime = models.DateTimeField(verbose_name="زمان پایان")
     price = models.BigIntegerField(verbose_name="قیمت کل")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name="وضعیت")
     
@@ -35,3 +35,15 @@ class projects(models.Model):
     class Meta:
         verbose_name = "پروژه"
         verbose_name_plural = "پروژه ها"
+
+
+class Todo(models.Model):
+    title = models.CharField(max_length=500,  verbose_name='عنوان یادآوری')
+    status = models.BooleanField(verbose_name='انجام شده')
+    
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = "یادآوری"
+        verbose_name_plural = "لیست یادآوری ها"

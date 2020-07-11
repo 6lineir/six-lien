@@ -8,14 +8,17 @@ from django.views.generic import (
 	UpdateView,
 	DeleteView
 )
+
 from blog.models import blog, category
+from myprojct.models import projects , Todo
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from .models import User
 from .forms import ProfileForm
 
-from .mixins import FieldsMixin, FormValidMixin
+from .mixins import FieldsMixin, FormValidMixin, FieldsMtodo
 # Create your views here.
 
 
@@ -66,3 +69,9 @@ class del_blog(LoginRequiredMixin ,FormValidMixin ,DeleteView):
 class succsess_add(ListView):
 	model = blog
 	template_name = "panel/success-add.html"
+
+
+# ToDo List . add.del.update ...
+class todo_list(ListView,FieldsMtodo , CreateView, DeleteView , UpdateView):
+	model = Todo
+	template_name = "panel/todo-list.html"

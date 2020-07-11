@@ -1,0 +1,15 @@
+*.log
+db.sqlite3
+venv
+local_settings.py
+*.pyc
+.git
+*.pot
+/__pycashe__
+__pycache__/
+venv/
+*.mo
+.env
+migrations/
+migrate/
+

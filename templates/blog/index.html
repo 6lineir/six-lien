@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 <title>6Line Studio Devel</title>
   <!-- Navigation -->
@@ -26,7 +27,7 @@
           <img class="card-img-top" src="{{ blog.photo.url }}" alt="{{ blog.title }}" width="300" height="220">
           <div class="card-body">
             <h4 class="card-title">{{ blog.title }}</h4>
-            <p class="card-text">{{ blog.bmemo }}</div>
+            <p class="card-text">{{ blog.bmemo|safe }}</div>
               <small class="text-muted">{{ blog.publish }}</small>
           <div class="card-footer">
             <a href="{% url 'blog:details' blog.slug %}" class="btn btn-primary">نمایش بلاگ</a>

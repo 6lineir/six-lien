@@ -23,7 +23,7 @@
           <img class="card-img-top" src="{{ blog.photo.url }}" alt="{{ blog.title }}" width="750" height="400">
           <div class="card-body">
             <h2 class="card-title">{{ blog.title }}</h2>
-            <p class="card-text">{{ blog.bmemo }}</p>
+            <p class="card-text">{{ blog.bmemo|safe }}</p>
             <a href="{% url 'blog:details' blog.slug %}" class="btn btn-primary">ادامه بلاگ&rarr;</a>
           </div>
           <div class="card-footer text-muted">

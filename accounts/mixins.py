@@ -1,4 +1,5 @@
 from blog.models import blog
+from myprojct.models import Todo
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 
@@ -8,10 +9,17 @@ class FieldsMixin():
 		self.fields = [
 			"title", "slug", "category",
 			"bmemo", "photo", "publish",
-			"status"
+			"status",
 		]
 		if request.user.is_superuser:
 			self.fields.append("author")
+		return super().dispatch(request, *args, **kwargs)
+
+class FieldsMtodo():
+	def dispatch(self, request, *args, **kwargs):
+		self.fields = [
+			"title","status"
+		]
 		return super().dispatch(request, *args, **kwargs)
 
 class FormValidMixin():

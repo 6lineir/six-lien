@@ -2,6 +2,7 @@ from django.db import models
 from accounts.models import User
 from django.utils.html import format_html
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -27,7 +28,7 @@ class blog(models.Model):
     author = models.ForeignKey(User , null=True, on_delete=models.CASCADE, verbose_name="نویسنده")
     title = models.CharField(max_length=48, verbose_name='عنوان' )
     slug = models.SlugField(unique=True, verbose_name='لینک نوشته')
-    bmemo = models.TextField(verbose_name='متن بلاگ')
+    bmemo = RichTextField(verbose_name='متن بلاگ')
     photo = models.ImageField(upload_to='pic-blog', verbose_name='تصویر بلاگ')
     category = models.ManyToManyField(category, verbose_name='دسته بندی')
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name="وضعیت")
